@@ -163,5 +163,81 @@ public class ClinicaService implements Consultable {
         System.out.println("Turno asignado con exito: " + t.toString());
     }
 
+    public void cancelarTurno(int idTurno) {
+        Turno encontrado = null;
+        for (int i = 0; i < turnos.size(); i++) {
+            if (turnos.get(i).getId() == idTurno) {
+                encontrado = turnos.get(i);
+                break;
+            }
+        }
+        if (encontrado == null) {
+            System.out.println("Turno no encontrado.");
+            return;
+        }
+        if (encontrado.getEstado() == EstadoTurno.ATENDIDO || encontrado.getEstado() == EstadoTurno.CANCELADO) {
+            System.out.println("No se puede cancelar el turno porque ya esta " + encontrado.getEstado() + ".");
+            return;
+        }
+        encontrado.setEstado(EstadoTurno.CANCELADO);
+        System.out.println("Turno cancelado exitosamente.");
+    }
 
+    public void cambiarEstadoTurno(int idTurno, EstadoTurno nuevo) {
+        Turno encontrado = null;
+        for (int i = 0; i < turnos.size(); i++) {
+            if (turnos.get(i).getId() == idTurno) {
+                encontrado = turnos.get(i);
+                break;
+            }
+        }
+        if (encontrado == null) {
+            System.out.println("Turno no encontrado.");
+            return;
+        }
+        encontrado.setEstado(nuevo);
+        System.out.println("Estado del turno actualizado a: " + nuevo);
+    }
+
+    @Override
+    public List<Turno> listarTurnosDelDia(LocalDate fecha) {
+        List<Turno> resultado = new ArrayList<>();
+        for (int i = 0; i < turnos.size(); i++) {
+            Turno t = turnos.get(i);
+            if (t.getFechaHora().toLocalDate().equals(fecha)) {
+                resultado.add(t);
+            }
+        }
+        Collections.sort(resultado, new Comparator<Turno>() {
+            @Override
+            public int compare(Turno t1, Turno t2) {
+                return t1.getFechaHora().compareTo(t2.getFechaHora());
+            }
+        });
+        return resultado;
+    }
+
+    @Override
+    public List<Turno> buscarPorMedico(Medico medico) {
+        List<Turno> resultado = new ArrayList<>();
+        for (int i = 0; i < turnos.size(); i++) {
+            Turno t = turnos.get(i);
+            if (t.getMedico().equals(medico)) {
+                resultado.add(t);
+            }
+        }
+        return resultado;
+    }
+
+    @Override
+    public List<Turno> buscarPorPaciente(Paciente paciente) {
+        List<Turno> resultado = new ArrayList<>();
+        for (int i = 0; i < turnos.size(); i++) {
+            Turno t = turnos.get(i);
+            if (t.getPaciente().equals(paciente)) {
+                resultado.add(t);
+            }
+        }
+        return resultado;
+    }
 }
