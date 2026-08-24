@@ -240,4 +240,5 @@ public class ClinicaService implements Consultable {
         }
         return resultado;
     }
+
 }
