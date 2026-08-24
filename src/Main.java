@@ -131,6 +131,10 @@ public class Main {
                     }
                     break;
                 case 5:
+                    System.out.println("Numero del turno");
+                    int idTurno = scanner.nextInt();
+                    scanner.nextLine();
+                    servicio.cancelarTurno(idTurno);
 
                     break;
                 case 6:
