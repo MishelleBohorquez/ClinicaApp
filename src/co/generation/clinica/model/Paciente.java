@@ -64,6 +64,9 @@ public class Paciente {
         }
         this.apellido = apellido.trim();
     }
+    public String getTelefono() {
+        return telefono;
+    }
 
     public void setTelefono(String telefono) {
         if (telefono == null) {
