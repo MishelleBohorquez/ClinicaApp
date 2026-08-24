@@ -13,7 +13,7 @@ public class Paciente {
         setCedula(cedula);
         setNombre(nombre);
         setApellido(apellido);
-        setTelefono(telefono);
+
     }
 
     // Constructor con ID
