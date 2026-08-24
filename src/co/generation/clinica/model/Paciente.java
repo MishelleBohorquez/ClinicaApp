@@ -13,6 +13,7 @@ public class Paciente {
         setCedula(cedula);
         setNombre(nombre);
         setApellido(apellido);
+        setTelefono(telefono);
 
     }
 
@@ -62,6 +63,29 @@ public class Paciente {
             throw new IllegalArgumentException("El apellido no puede estar vacío o ser nulo.");
         }
         this.apellido = apellido.trim();
+    }
+
+    public void setTelefono(String telefono) {
+        if (telefono == null) {
+            throw new IllegalArgumentException("El teléfono no puede ser nulo.");
+        }
+
+        String telefonoLimpio = telefono.trim();
+
+
+        if (telefonoLimpio.length() < 7 || telefonoLimpio.length() > 10) {
+            throw new IllegalArgumentException("El teléfono debe tener entre 7 y 10 dígitos.");
+        }
+
+
+        for (int i = 0; i < telefonoLimpio.length(); i++) {
+            char c = telefonoLimpio.charAt(i);
+            if (!Character.isDigit(c)) {
+                throw new IllegalArgumentException("El teléfono solo debe contener números.");
+            }
+        }
+
+        this.telefono = telefonoLimpio;
     }
 
 
