@@ -1,5 +1,6 @@
 package co.generation.clinica.model;
 import java.time.*;
+
 public class Turno {
     private int id;
     private Paciente paciente;
@@ -11,7 +12,7 @@ public class Turno {
         this.paciente = paciente;
         this.medico = medico;
         this.fechaHora = fechaHora;
-        this.estado = PENDIENTE;
+        this.estado = EstadoTurno.PENDIENTE;
     }
 
     public Turno(int id, Paciente paciente, Medico medico, LocalDateTime fechaHora, EstadoTurno estado){
