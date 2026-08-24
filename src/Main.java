@@ -2,8 +2,10 @@ import co.generation.clinica.datos.DatosCSV;
 import co.generation.clinica.model.Especialidad;
 import co.generation.clinica.model.Medico;
 import co.generation.clinica.model.Paciente;
+import co.generation.clinica.model.Turno;
 import co.generation.clinica.service.ClinicaService;
 
+import java.time.LocalDateTime;
 import java.util.Scanner;
 
 public class Main {
@@ -91,6 +93,21 @@ public class Main {
                     if (medicoTurno == null){
                         System.out.println("El medico no existe");
                     }
+                    System.out.println("Año");
+                    int anio = scanner.nextInt();
+                    System.out.println("Mes");
+                    int mes = scanner.nextInt();
+                    System.out.println("Dia");
+                    int dia = scanner.nextInt();
+                    System.out.println("Hora");
+                    int hora = scanner.nextInt();
+                    System.out.println("Minuto");
+                    int minuto = scanner.nextInt();
+                    scanner.nextLine();
+                    LocalDateTime fechaHora = LocalDateTime.of(anio, mes, dia, hora, minuto);
+
+                    Turno turno = new Turno(paciente2,medicoTurno, fechaHora);
+                    servicio.asignarTurno(turno);
                     break;
                 case 4:
 
