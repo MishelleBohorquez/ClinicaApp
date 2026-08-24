@@ -5,7 +5,9 @@ import co.generation.clinica.model.Paciente;
 import co.generation.clinica.model.Turno;
 import co.generation.clinica.service.ClinicaService;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -110,8 +112,23 @@ public class Main {
                     servicio.asignarTurno(turno);
                     break;
                 case 4:
+                    System.out.println("Año");
+                    int anio2 = scanner.nextInt();
+                    System.out.println("Mes");
+                    int mes2 = scanner.nextInt();
+                    System.out.println("Dia");
+                    int dia2 = scanner.nextInt();
+                    scanner.nextLine();
+                    LocalDate fecha = LocalDate.of(anio2,mes2,dia2);
+                    List<Turno> turnoDelDia = servicio.listarTurnosDelDia(fecha);
+                    if (turnoDelDia.isEmpty()){
+                        System.out.println("No hay turnos registrados");
+                    }else{
+                        for (Turno t : turnoDelDia){
+                            System.out.println(t);
 
-
+                        }
+                    }
                     break;
                 case 5:
 
