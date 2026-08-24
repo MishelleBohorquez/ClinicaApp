@@ -92,6 +92,6 @@ public class Turno {
 
     @Override
     public String toString() {
-        return "["+estado+"] "+paciente.getNombre()+" "+paciente.getApellido()+" --Dr. "+medico.getNombre() + " "+medico.getApellido()+" ("+medico.especialidad+") "+"--"+fechaHora;
+        return "["+estado+"] "+paciente.getNombre()+" "+paciente.getApellido()+" --Dr. "+medico.getNombre() + " "+medico.getApellido()+" ("+medico.getEspecialidad()+") "+"--"+fechaHora;
     }
 }
