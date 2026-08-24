@@ -1,7 +1,8 @@
 package co.generation.clinica.model;
 
+import co.generation.clinica.interfaces.Registrable;
 
-public class Paciente {
+public class Paciente implements Registrable {
     private int id;
     private String cedula;
     private String nombre;
@@ -14,7 +15,6 @@ public class Paciente {
         setNombre(nombre);
         setApellido(apellido);
         setTelefono(telefono);
-
     }
 
     // Constructor con ID
@@ -22,7 +22,6 @@ public class Paciente {
         this(cedula, nombre, apellido, telefono);
         this.id = id;
     }
-
 
     public int getId() {
         return id;
@@ -64,6 +63,7 @@ public class Paciente {
         }
         this.apellido = apellido.trim();
     }
+
     public String getTelefono() {
         return telefono;
     }
@@ -75,11 +75,9 @@ public class Paciente {
 
         String telefonoLimpio = telefono.trim();
 
-
         if (telefonoLimpio.length() < 7 || telefonoLimpio.length() > 10) {
             throw new IllegalArgumentException("El teléfono debe tener entre 7 y 10 dígitos.");
         }
-
 
         for (int i = 0; i < telefonoLimpio.length(); i++) {
             char c = telefonoLimpio.charAt(i);
@@ -91,5 +89,33 @@ public class Paciente {
         this.telefono = telefonoLimpio;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof Paciente)) {
+            return false;
+        }
+        Paciente otroPaciente = (Paciente) obj;
+        return cedula != null && cedula.equals(otroPaciente.cedula);
+    }
 
+    @Override
+    public String toString() {
+        return nombre + " " + apellido + " - " + cedula + " - " + telefono;
+    }
+
+    @Override
+    public String getDatosRegistro() {
+        return toString();
+    }
+
+    @Override
+    public boolean esValido() {
+        return cedula != null && !cedula.trim().isEmpty() &&
+                nombre != null && !nombre.trim().isEmpty() &&
+                apellido != null && !apellido.trim().isEmpty() &&
+                telefono != null && telefono.length() >= 7 && telefono.length() <= 10;
+    }
 }
