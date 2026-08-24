@@ -75,11 +75,11 @@ clinicaapp/
 
 Integrantes
 
-° _Samuel Vélez Guzmán_ n/
-° _Dylan Puentes_ n/
-° _Sneyder Rodriguez_ n/
-° _Mishuelle Bohorquez_ n/
-° _Jasbleydy Camacho_ n/
+° _Samuel Vélez Guzmán_ \n
+° _Dylan Puentes_ \n
+° _Sneyder Rodriguez_ \n
+° _Mishuelle Bohorquez_ \n
+° _Jasbleydy Camacho_ \n
 
 ---
 
