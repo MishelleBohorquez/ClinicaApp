@@ -1,6 +1,6 @@
 package co.generation.clinica.model;
 
-public class Medico {
+public class Medico implements co.generation.clinica.interfaces.Registrable {
     private int id;
     private String nombre;
     private String apellido;
@@ -56,5 +56,29 @@ public class Medico {
             throw new IllegalArgumentException("Campo especialidad se encuentra vacio");
         }
         this.especialidad = especialidad;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof Medico)) {
+            return false;
+        }
+        Medico otroMedico = (Medico) obj;
+        return nombre.equalsIgnoreCase(otroMedico.nombre) && apellido.equalsIgnoreCase(otroMedico.apellido);
+    }
+
+    @Override
+    public String toString() {
+        return "Dr. "+nombre+" "+apellido+" - "+especialidad;
+    }
+
+    public String getDatosRegistro(){
+        return "Dr. "+nombre+" "+apellido+" - "+especialidad;
+    }
+    public boolean esValido(){
+        return nombre != null && !nombre.trim().isEmpty() && apellido != null && !apellido.trim().isEmpty() && especialidad != null;
     }
 }
