@@ -20,17 +20,15 @@ public class Main {
             System.out.println("2. Registrar medico");
             System.out.println("3. Asignar turno");
             System.out.println("4. Listar turnos del día");
-            System.out.print("5. Cancelar turno");
-            System.out.print("6. Ver turnos por médico");
-            System.out.print("7. Ver turnos por paciente");
-            System.out.print("8. Cambiar estado de turno");
-            System.out.print("9. Listar pacientes");
-            System.out.print("10. Listar médicos");
+            System.out.println("5. Cancelar turno");
+            System.out.println("6. Ver turnos por médico");
+            System.out.println("7. Ver turnos por paciente");
+            System.out.println("8. Cambiar estado de turno");
+            System.out.println("9. Listar pacientes");
+            System.out.println("10. Listar médicos");
             System.out.println("0. Salir");
             int opcionMenu = scanner.nextInt();
             scanner.nextLine();
-
-
             switch (opcionMenu) {
                 case 1:
                     System.out.println("Ingresa el nombre: ");
@@ -78,8 +76,21 @@ public class Main {
                     }
                     break;
                 case 3:
+                    System.out.println("Ingrese el número de cedula: ");
+                    String cedula2 = scanner.nextLine();
+                    Paciente paciente2 = servicio.buscarPorCedula(cedula2);
+                    if (cedula2 == null){
+                        System.out.println("El paciente no existe");
+                    }
+                    System.out.println("Ingresa el nombre: ");
+                    String nombre3 = scanner.nextLine();
+                    System.out.println("Ingrese su apellido: ");
+                    String apellido3 = scanner.nextLine();
+                    Medico medicoTurno = servicio.buscarPorNombreApellido(nombre3, apellido3);
 
-
+                    if (medicoTurno == null){
+                        System.out.println("El medico no existe");
+                    }
                     break;
                 case 4:
 
